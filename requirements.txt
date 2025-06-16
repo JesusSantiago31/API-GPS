@@ -4,5 +4,7 @@ Shapely==2.0.1
 flask-cors==3.0.10         # Para manejar CORS si consumes la API desde un frontend separado
 
 requests
+web: gunicorn app:app
+
 gunicorn
 ...
