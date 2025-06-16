@@ -1,0 +1,261 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+}
+
+body, html, #app {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Roboto', Arial, sans-serif;
+  background: #f9f9f9;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header flotante sobre el mapa - título */
+header {
+  position: absolute;
+  top: 0px;            /* un poco más arriba */
+  left: 60%;            /* más hacia la derecha */
+  transform: translateX(-50%);
+  color: #fff;
+  font-weight: 900;
+  font-size: 2rem;    /* más grande */
+  user-select: none;
+  z-index: 1100;
+  /* sombra más fuerte para que resalte */
+  text-shadow:
+    2px 2px 6px rgba(0, 0, 0, 0.85),
+    0 0 12px rgba(255, 255, 255, 0.3);
+  pointer-events: none; /* para que clics pasen al mapa */
+}
+
+/* Panel de controles sobre el mapa */
+#controls-panel {
+  position: absolute;
+  top: 10px;            /* más arriba */
+  left: 60px;           /* más a la derecha */
+  background: rgba(0, 0, 0, 0.40);
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.45);
+  padding: 16px 22px;
+  z-index: 1050;
+  user-select: none;
+  width: 450px;
+  color: white;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+#controls-panel:hover {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+
+/* Botones con colores y tamaño más visibles */
+.btn-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.btn {
+  flex: 1;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: rgba(255 255 255 / 0.9);
+  font-weight: 600;
+  color: #222;
+  transition: background-color 0.25s ease, box-shadow 0.3s ease;
+  user-select: none;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 0.15);
+}
+
+.btn:hover {
+  background: rgba(255 255 255 / 1);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.3);
+}
+
+.btn.active {
+  background: #4285f4;
+  color: white;
+  box-shadow: 0 4px 15px rgba(66, 133, 244, 0.8);
+}
+
+.btn-clear {
+  background: #e57373;
+  color: white;
+  font-weight: 700;
+}
+
+.btn-clear:hover {
+  background: #d32f2f;
+}
+
+/* Tipo de ruta compacto y con colores claros */
+.btn-group-radio {
+  display: flex;
+  gap: 25px;
+  font-size: 1rem;
+  color: #ddd;
+  border-top: 1px solid rgba(255 255 255 / 0.3);
+  padding-top: 12px;
+  user-select: none;
+}
+
+.btn-group-radio legend {
+  display: none; /* ocultar texto legend para simplificar */
+}
+
+.btn-group-radio label {
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-group-radio input[type="radio"] {
+  cursor: pointer;
+  accent-color: #4285f4;
+  width: 18px;
+  height: 18px;
+}
+
+/* Main toma todo el alto para el mapa + sidebar */
+main {
+  flex: 1;
+  display: flex;
+  height: 100vh;
+  margin-top: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* El mapa ocupa todo el espacio disponible excepto sidebar */
+#map {
+  flex-grow: 1;
+  border-radius: 0;
+  box-shadow: none;
+  height: 100%;
+  width: 100%;
+  filter: drop-shadow(0 0 5px rgba(0,0,0,0.15));
+}
+
+/* Sidebar información ruta se mantiene igual */
+#route-info {
+  width: 350px;
+  background: white;
+  margin-left: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgb(0 0 0 / 0.12);
+  padding: 20px 25px;
+  overflow-y: auto;
+  user-select: text;
+  z-index: 1050;
+}
+
+#route-info h2 {
+  margin-top: 0;
+  font-weight: 600;
+  color: #1a1a1a;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 10px;
+}
+
+.info-item {
+  margin-bottom: 14px;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+#instructions {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #555;
+  max-height: 200px;
+  overflow-y: auto;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+}
+
+/* Marcadores siguen igual */
+.marker-icon {
+  font-size: 22px;
+  user-select: none;
+}
+
+.start-marker {
+  color: #34a853; /* verde Google */
+}
+
+.end-marker {
+  color: #ea4335; /* rojo Google */
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  #route-info {
+    width: 100%;
+    height: 220px;
+    margin-left: 0;
+    border-radius: 0;
+    box-shadow: none;
+    overflow-y: auto;
+  }
+
+  main {
+    flex-direction: column;
+    height: calc(100vh);
+  }
+
+  #map {
+    height: 60%;
+  }
+}
+
+
+
+
+
+fieldset label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 4px 1em;
+  font-size: 0.9rem;
+  gap: 1em;
+}
+
+fieldset label input {
+  flex: 1;
+  max-width: 100px;
+  padding: 4px 8px;
+  font-size: 0.9rem;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+}
+
+#gasoline-type,
+#max-price-input {
+  margin-left: 1em;
+  margin-top: 4px;
+  padding: 4px 8px;
+  font-size: 0.9rem;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  max-width: 200px;
+}
+
+input:focus,
+select:focus {
+  border-color: #4285f4;
+  box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+  outline: none;
+}
