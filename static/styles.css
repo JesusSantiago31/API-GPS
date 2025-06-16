@@ -17,26 +17,25 @@ body, html, #app {
 /* Header flotante sobre el mapa - título */
 header {
   position: absolute;
-  top: 0px;            /* un poco más arriba */
-  left: 60%;            /* más hacia la derecha */
+  top: 0px;
+  left: 60%;
   transform: translateX(-50%);
   color: #fff;
   font-weight: 900;
-  font-size: 2rem;    /* más grande */
+  font-size: 2rem;
   user-select: none;
   z-index: 1100;
-  /* sombra más fuerte para que resalte */
   text-shadow:
     2px 2px 6px rgba(0, 0, 0, 0.85),
     0 0 12px rgba(255, 255, 255, 0.3);
-  pointer-events: none; /* para que clics pasen al mapa */
+  pointer-events: none;
 }
 
 /* Panel de controles sobre el mapa */
 #controls-panel {
   position: absolute;
-  top: 10px;            /* más arriba */
-  left: 60px;           /* más a la derecha */
+  top: 10px;
+  left: 60px;
   background: rgba(0, 0, 0, 0.40);
   border-radius: 10px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.45);
@@ -52,7 +51,6 @@ header {
 #controls-panel:hover {
   background: rgba(0, 0, 0, 0.55);
 }
-
 
 /* Botones con colores y tamaño más visibles */
 .btn-group {
@@ -108,7 +106,7 @@ header {
 }
 
 .btn-group-radio legend {
-  display: none; /* ocultar texto legend para simplificar */
+  display: none;
 }
 
 .btn-group-radio label {
@@ -146,7 +144,7 @@ main {
   filter: drop-shadow(0 0 5px rgba(0,0,0,0.15));
 }
 
-/* Sidebar información ruta se mantiene igual */
+/* Sidebar información ruta */
 #route-info {
   width: 350px;
   background: white;
@@ -190,11 +188,11 @@ main {
 }
 
 .start-marker {
-  color: #34a853; /* verde Google */
+  color: #34a853;
 }
 
 .end-marker {
-  color: #ea4335; /* rojo Google */
+  color: #ea4335;
 }
 
 /* Responsive */
@@ -218,10 +216,7 @@ main {
   }
 }
 
-
-
-
-
+/* Estilos para inputs en fieldset */
 fieldset label {
   display: flex;
   justify-content: space-between;
